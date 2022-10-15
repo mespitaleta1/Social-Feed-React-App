@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Widget from "./components/Widget/Widget";
+import APIconstants from "./constants/api"; 
+import { LIMIT_OF_POST, TIME_RANGE } from "./constants/widgetConstants"
 
 function App() {
+  const BASE_URL = APIconstants.API_BASE_URL;
+  const limit = LIMIT_OF_POST;
+  const updateInterval = TIME_RANGE;  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+          </ul>
+        </nav>
+        <div>
+          <header>
+            <div
+              style={{
+                backgroundColor: "#741AF6",
+                height: "600px",
+              }}
+            >
+              <h1 style={{ padding: "30px 300px", color: "white" }}>Social widget feed</h1>
+            </div>
+          </header>
+          </div>
+
+        <Routes>
+          <Route path="/" element={
+            <Widget 
+            feedUrl={BASE_URL} 
+            limit={limit} 
+            updateInterval={updateInterval}
+            />
+          } />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
