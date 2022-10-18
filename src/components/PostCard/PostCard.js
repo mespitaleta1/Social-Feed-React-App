@@ -1,17 +1,18 @@
-const PostCard = ({
-    authorName,
-    publishDate,
-    postCopy
-}) => {
-    return (
-    <div style={{margin: "40px 80px"}}>
-        <div style={{ borderRadius:"5px", padding:"20px", backgroundColor:"white"}}>
-            <p>{postCopy}</p>
-            <p style={{color: "#741AF6"}}>{`- ${authorName}`}</p>
-        </div>
-        <p style={{marginLeft: "10px", color: "white"}}>{`Posted ${publishDate}`}</p>
-    </div>
-    ); 
-}
+import React from 'react';
+import { Card, CardBody, Text } from './PostCard.style';
 
-export default PostCard; 
+const PostCard = ({ authorName, publishDate, postCopy }) => {
+  return (
+    <Card>
+      <CardBody>
+        <Text>{postCopy}</Text>
+        <Text variant="theme1">{`- ${authorName}`}</Text>
+      </CardBody>
+      <div>
+        <Text variant="theme2">{`Posted ${publishDate}`}</Text>
+      </div>
+    </Card>
+  );
+};
+
+export default PostCard;
